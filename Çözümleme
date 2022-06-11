@@ -1,0 +1,52 @@
+import base64
+import os
+liste = []
+files = []
+import datetime
+start_time = datetime.datetime.now()
+for r, d, fa in os.walk('/Users/erdi/Desktop/deneme/'):
+    for file in fa:
+        files.append(os.path.join(r, file))
+for f in files:
+    if (f.index(".") != -1):
+        with open(f, "r") as da:
+            liste = [i for i in da.readlines() if i is not None or len(str(i).strip()) > 0]
+        with open(f, "w") as fa:
+            for x in liste:
+                indexIlk = x.index("523xa341spouUYVXAs2CmnCh3")
+                indexSon = x.index("521çSX4231xlXyuTC124gSYXgfsYsLfPXXa2EDnMKFL3RWi3KxDrTlO")
+                uzantı = x[indexIlk + 25:indexSon]
+                decodedU = uzantı.encode()
+                cozucuU = base64.b64decode(decodedU)
+                mesaja = cozucuU.decode()
+                mesaja = "." + mesaja
+                x = x.replace("CYhHSXYwUyThLVKqH34uV56Y3EcT4WfVQjivYjaa24xQxHGZjTLQvf0SkxYO0OGaEjTkqwYsxLB","")
+                x = x.replace("SOS30UxOQaq7EPknSO18qTDa2cTSuTWVhKl9HUxVpKTjpTjVJKDH2YTTmQDpSlHMkPDGyRxTiaD0", "")
+                x = x.replace(uzantı + "521çSX4231xlXyuTC124gSYXgfsYsLfPXXa2EDnMKFL3RWi3KxDrTlO", "")
+                x = x.replace("523xa341spouUYVXAs2CmnCh3", "")
+                x = x.replace("21WvzwCsa2GFeA29", "=")
+                x = x.replace("X21cayIBTp912Q", "==")
+                x = x.replace("56UVE3k", "ZqZFhKbFUzQmhZMlVL")
+                x = x.replace("Akl97ktrB2", "llXNURhR1U9")
+                x = x.replace("AS2kJHGbgy452Bn", "xVMl56UVE3kUT")
+                x = x.replace("SaX71aKHVdrasx", "VmVCdXpzaGV")
+                x = x.replace("kj56YtbdAWZ", "sxVMl56UVE3kU")
+                decoded = x.encode()
+                cozucu = base64.b64decode(decoded)
+                mesaj = cozucu.decode()
+                mesaj = mesaj.replace("VeBuzshe", "")
+                decoded1 = mesaj.encode()
+                cozucu1 = base64.b64decode(decoded1)
+                mesaj1 = cozucu1.decode()
+                mesaj1 = mesaj1.replace("SecureSpace", "")
+                mesaj1 = mesaj1.replace("CoManChe", "")
+                a = mesaj1.encode('UTF-8').decode()
+                fa.write(str(a))
+        dosyaOkuma = open(f, 'r').read()
+        dosyaEncode = base64.b64decode(dosyaOkuma.encode())
+        os.remove(f)
+        f = (os.path.splitext(f)[0] + mesaja)
+        with open(f, "wb") as file:
+            file.write(dosyaEncode)
+end_time = datetime.datetime.now()
+print(end_time - start_time)
